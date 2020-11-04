@@ -1,4 +1,10 @@
 defmodule Collatz do
+  @typedoc """
+  A Natural number is a positive Integer
+  """
+  @type natural :: integer
+
+  @spec collatz1(natural()) :: natural()
   def collatz1(n) when is_integer(n) do
     IO.puts("Input: #{n}")
     IO.inspect(Process.info(self(), :current_stacktrace))
@@ -45,4 +51,5 @@ defmodule Collatz do
   end
 end
 
-Collatz.collatz3(20)
+Collatz.collatz1(10)
+# Collatz.collatz3(20)
