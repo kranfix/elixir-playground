@@ -25,6 +25,24 @@ defmodule Collatz do
       true -> collatz2(3 * n + 1)
     end
   end
+
+  def collatz3(1) do
+    IO.puts("Input: #{1}")
+    # IO.inspect(Process.info(self(), :current_stacktrace))
+    1
+  end
+
+  def collatz3(n) when rem(n, 2) == 0 do
+    IO.puts("Input: #{n}")
+    # IO.inspect(Process.info(self(), :current_stacktrace))
+    collatz3(round(n / 2))
+  end
+
+  def collatz3(n) do
+    IO.puts("Input: #{n}")
+    # IO.inspect(Process.info(self(), :current_stacktrace))
+    collatz3(3 * n + 1)
+  end
 end
 
-Collatz.collatz2(20)
+Collatz.collatz3(20)
