@@ -11,7 +11,7 @@ defmodule Factorial do
   #   acc *= (i + 1); // acc = acc * (i + 1)
   # }
   # return acc;
-  defp facp1(n, i, acc) do
+  defp facp1(n, i, acc) when is_integer(n) do
     ## if i < n do
     ##   facp1(n, i + 1, acc * (i + 1))
     ## else
@@ -23,25 +23,28 @@ defmodule Factorial do
     end
   end
 
-  def fac1(n) do
+  def fac1(n) when is_integer(n) do
     facp1(n, 0, 1)
   end
 
   # fac2(n) = Acc(n, k) * fac2(n - k)
   # Acc(n, k) = n * (n-1) * ... * (n - k + 1)
   # Acc(n, k) = Acc(n, k-1) * (n - k + 1)
-  def fac2(n) do
+  def fac2(n) when is_integer(n) do
     cond do
       n < 1 -> 1
       true -> facp2(n - 1, n)
     end
   end
 
-  defp facp2(0, acc) do
+  # defp facp2(n, acc) when is_integer(n) and n == 0 do
+  #  acc
+  # end
+  defp facp2(0, acc) when is_integer(n) do
     acc
   end
 
-  defp facp2(n, acc) do
+  defp facp2(n, acc) when is_integer(n) do
     facp2(n - 1, acc * n)
   end
 end
