@@ -20,6 +20,7 @@ defmodule Geometry do
     def perimeter(shape)
   end
 
+  # Instead of rect.are(), you must write Shape.area(rect)
   defimpl Shape, for: Rectangle do
     def area(r) do
       r.b * r.h
@@ -30,6 +31,7 @@ defmodule Geometry do
     end
   end
 
+  # Instead of circler.area(), you must write Shape.area(circle)
   defimpl Shape, for: Circle do
     def area(c) do
       :math.pi() * c.r * c.r / 2
