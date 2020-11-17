@@ -15,8 +15,8 @@ defmodule IteratorTest do
     if is_there_a_next do
       assert Iterator.next(pid) == Enum.at(list, index)
       each(pid, list, index + 1)
+    else
+      assert index == length(list)
     end
-
-    assert index == length(list) - 1
   end
 end
