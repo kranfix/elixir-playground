@@ -32,16 +32,30 @@ defmodule ChirpWeb.PostLive.PostComponent do
             <% end %>
           </span>
           <span class="col col-s3">
-            <%= @post.like_count %>
-            <i class="material-icons">thumb_up</i>
+            <a href="#" phx-click="like" phx-target="<%= @myself %>">
+              <%= @post.like_count %>
+              <i class="material-icons">thumb_up</i>
+            </a>
           </span>
           <span class="col col-s3">
-          <%= @post.reports_count %>
-            <i class="material-icons">not_interested</i>
+            <a href="#" phx-click="report" phx-target="<%= @myself %>">
+              <%= @post.reports_count %>
+              <i class="material-icons">not_interested</i>
+            </a>
           </span>
         </div>
       </div>
     </div>
     """
+  end
+
+  def handle_event("like", _, socket) do
+    Chirp.Timeline.inc_likes(socket.assigns.post)
+    {:noreply, socket}
+  end
+
+  def handle_event("report", _, socket) do
+    Chirp.Timeline.inc_reports(socket.assigns.post)
+    {:noreply, socket}
   end
 end
