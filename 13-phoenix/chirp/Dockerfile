@@ -1,4 +1,4 @@
-FROM phoenix:0.0.1
+FROM phoenix:0.0.3
 
 WORKDIR /app
 
