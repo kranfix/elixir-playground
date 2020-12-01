@@ -5,7 +5,8 @@ config :chirp, Chirp.Repo,
   username: "postgres",
   password: "pgsecret",
   database: "chirp_dev",
-  hostname: "localhost",
+  # This hostname is defined in the docker compose
+  hostname: "db",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
