@@ -26,3 +26,22 @@ IO.puts (map2 == map) # false
 
 map3 = Map.put(map2, :c, false) # %{2 => "hello", :a => 5, :c => false, true => :ok}
 IO.puts (map2 == map3) # false
+
+# %{map | :c => "bye"} # Thorws a KeyError because :c is not int map
+map4 = %{map | :a => "bye"} # %{2 => "hello", :a => "bye", true => :ok}
+IO.puts (map4 == map) # false
+
+
+# If the key is an atom:
+IO.puts map.a   # 5
+IO.puts map[:a] #5
+
+# We can also have nested data structures
+users = [
+  frank: %{lastname: "Moreno", country: "Peru"},
+  # frank: %{:lastname => "Moreno", :country => "Peru"},
+  Juan: %{lastname: "Meza", country: "Colombia"}
+]
+
+IO.puts users[:frank].lastname # Moreno
+# users.frank # Throws an Argument Error
